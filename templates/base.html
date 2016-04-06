@@ -1,9 +1,11 @@
-<!DOCTYPE html>
 {% load staticfiles %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dublin Coding BootCamp Blog</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static "css/blog.css" %}">
     <style>
         #pageTitle {
@@ -12,17 +14,43 @@
     </style>
 </head>
 <body>
-    <div>
-        <h1 id="pageTitle"><a href="/">Coding BootCamp Blog</a></h1>
-    </div>
-    <div>
-        <div>
-                <div>
-                    {% block content %}
-                    {% endblock %}
-                </div>
+    <!-- Masthead-->
+    <div id="masthead">
+        <div class="container">
+            <div class="row">
+                <h1 id="pageTitle"><a href="/">Coding BootCamp Blog</a>
+                    <p id="logo" class="lead">The Trials of a BootCamp Developer</p>
+                </h1>
+            </div>
         </div>
     </div>
+    <!-- Masthead-->
+
+    <!-- Blog entries container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!--blog entries-->
+                        {% block content %}
+                        {% endblock %}
+                        <!--blog entries-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog entries container -->
+
+    <footer>
+        <div class="container">
+        </div>
+    </footer>
+
+    <!-- script references -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 
 </body>
 </html>
