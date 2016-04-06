@@ -2,5 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="db" uuid="c988ad74-32ad-4a00-85cb-67ecbffcaf98" />
+    <data-source name="Django default" uuid="29715942-60eb-48ac-96ed-66ca1a803a06">
+      <auth-required>false</auth-required>
+    </data-source>
   </component>
 </project>
