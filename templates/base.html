@@ -1,12 +1,19 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dublin Coding BootCamp Blog</title>
+    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    <style>
+        #pageTitle {
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <h1><a href="/">Coding BootCamp Blog</a></h1>
+        <h1 id="pageTitle"><a href="/">Coding BootCamp Blog</a></h1>
     </div>
     <div>
         <div>
