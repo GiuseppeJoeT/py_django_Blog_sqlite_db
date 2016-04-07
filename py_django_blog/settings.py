@@ -36,9 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog_app',
+    'django.contrib.sites',
     'disqus',
-    'django.contrib.sites'
 ]
+
+DISQUS_WEBSITE_SHORTNAME = "djangoblog"
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +123,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),  # static project at the project level
 )
+
+
+
+
+
