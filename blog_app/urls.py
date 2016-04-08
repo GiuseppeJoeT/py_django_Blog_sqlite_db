@@ -3,6 +3,7 @@ import views
 
 urlpatterns = [
     url(r'^$', views.post_list),
+    url(r'^/(?P<id>\d+)/$', views.post_detail),
     url(r'^index/$', views.post_list),
     url(r'^index/(?P<id>\d+)/$', views.post_detail),
     url(r'^blog/$', views.post_list),
