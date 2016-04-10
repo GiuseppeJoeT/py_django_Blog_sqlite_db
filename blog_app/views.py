@@ -29,6 +29,13 @@ def post_detail(request, id):
 
 def new_post(request):
     if request.method == "POST":
-        form = BlogPostForm(request.POST)
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
-            return render(request, 'blogpostform.html', {'form': form})
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)  # pk???
+        else:
+            form = PostForm()
+            return render(request, 'blog/blogpostform.html', {'form': form})
