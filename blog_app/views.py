@@ -9,16 +9,15 @@ def post_list(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
-# def most_popular_post_list(request):
-
-
-
 '''
 Django allows us to append strings to table fields that act as boolean operators.
 In our case, we are appending "__tle", which stands for "less-than-or-equal-to" (<=)
 to our "published_date" field.
 '''
 
+
+# Function that handles the most 5 popular post VIEW in the home page
+# def most_popular_post_list(request):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk=id)
@@ -37,20 +36,26 @@ def new_post(request):
             post.save()
             return redirect('post_detail', pk=post.pk)  # pk???
         else:
-            form = BlogPostForm()  #  PostForm() ??? Function did't recognize
+            form = PostForm()  # ??? Function did't recognize
         return render(request, 'blogpostform.html', {'form': form})
 
 
 def edit_post(request, id):
-    post = get_object_or_404(Post)
+    post = get_object_or_404(Post, pk=id)
     if request.method == "POST":
         form = BlogPostForm(request.POST, instance=post)
         if form.is_valid():
+            # check if details are valid
             post = form.save(commit=False)
             post.author = request.user
+            # redirect the user to the page that will show
+            # the submitted details
             post.published_date = timezone.now()
-            post.save()
+            post.save()  # save data to DB
             return redirect(post_detail, post.pk)
         else:
+            # if the method is GET we instantiate the
+            # BlogPostForm class giving it the post
+            # we are editing and direct the user to it
             form = BlogPostForm(instance=post)
         return render(request, 'blogpostform.html', {'form': form})
