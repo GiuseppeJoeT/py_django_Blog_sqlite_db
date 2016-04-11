@@ -34,10 +34,10 @@ def new_post(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)  # pk???
-        else:
-            form = PostForm()  # ??? Function did't recognize
-        return render(request, 'blogpostform.html', {'form': form})
+            return redirect(post_detail, post.pk)  # pk???
+    else:
+        form = BlogPostForm()  # ??? Function did't recognize
+    return render(request, 'blogpostform.html', {'form': form})
 
 
 def edit_post(request, id):
@@ -53,9 +53,9 @@ def edit_post(request, id):
             post.published_date = timezone.now()
             post.save()  # save data to DB
             return redirect(post_detail, post.pk)
-        else:
+    else:
             # if the method is GET we instantiate the
             # BlogPostForm class giving it the post
             # we are editing and direct the user to it
-            form = BlogPostForm(instance=post)
-        return render(request, 'blogpostform.html', {'form': form})
+        form = BlogPostForm(instance=post)
+    return render(request, 'blogpostform.html', {'form': form})
